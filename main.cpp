@@ -11,6 +11,7 @@
  *                              implemented color coeficient changing
  *                              implemented Shading Model
  *                              Needing Z-buffer
+ *
  * ********************************************************************************************/
 
 
@@ -108,8 +109,17 @@ glm::mat3 xRotationMatrix = glm::mat3(
                                       );
 /************main**************
  * ***************************/
-int main()
+
+int main(int argc,char **argv)
 {
+    /* Current Path*/
+    char the_path[256];
+    
+    getcwd(the_path, 255);
+    strcat(the_path, "/");
+    strcat(the_path, argv[0]);
+    printf("Current Path:%s\n", the_path);
+    
     
     
     char buf[50]="cow_up.in";
@@ -432,6 +442,9 @@ void ReadInput(char *FileName)
     float shine[MAX_MATERIAL_COUNT];
     int material_count,color_index[3], i;
     char ch;
+    
+
+    
     
     FILE* fp=fopen(FileName,"r");
     if(fp==NULL){
